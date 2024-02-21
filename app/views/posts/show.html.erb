@@ -1,0 +1,9 @@
+<h1><%= @post.title %></h1>
+<p><%= @post.content %></p>
+<p><%= "Published at: #{@post.published_at.strftime('%d-%m-%Y %H:%M:%S')}" %>
+
+<h2>Author Details</h2>
+<p>Name: <%= @post.author.name %></p>
+
+
+<%= link_to 'Edit Post', edit_post_path(@post) %>

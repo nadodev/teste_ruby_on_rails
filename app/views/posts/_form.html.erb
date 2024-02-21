@@ -1,0 +1,39 @@
+<%= form_with(model: @post, local: true, data: { turbo: false }) do |form| %>
+  <%= form.hidden_field :author_id %>
+
+    <% if post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+  
+        <ul>
+          <% post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :content %>
+      <%= form.text_area :content %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :published_at %>
+      <%= form.datetime_field :published_at %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :author_id %>
+      <%= form.collection_select :author_id, Author.all, :id, :name %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
