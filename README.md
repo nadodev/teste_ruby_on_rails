@@ -1,24 +1,63 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Teste Ruby On Rails
 
-Things you may want to cover:
+Esse projeto consiste em um teste, feito com ruby on rails.
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
+## Stack utilizada
 
-* Database creation
+**Front-end:** html, scss, css , bootstrap
 
-* Database initialization
+**Back-end:** Ruby, Ruby on Rails
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Configuração do Ambiente
+Certifique-se de ter o ambiente Ruby on Rails configurado corretamente.
 
-* Deployment instructions
 
-* ...
+## Clone
+
+faça o clone do projeto 
+
+```bash
+  git clone https://github.com/nadodev/teste_ruby_on_rails.git
+ 
+```
+    
+
+## Instalação
+
+Instale as libs com  bundle
+
+```bash
+  cd teste_ruby_on_rails
+  bundle install
+```
+    
+
+## Configure o banco de dados:
+
+Rode as migrations com 
+
+```bash
+  rails db:migrate
+```
+    
+## Iniciar o projeto
+
+
+```bash
+  rails server
+```
+## Funcionalidades
+
+- CRUD de posts
+- Validações de campos obrigatórios
+- Busca de posts
+
+## Rodar os Teste
+
+
+```bash
+  rails test
