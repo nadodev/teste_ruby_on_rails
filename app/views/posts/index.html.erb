@@ -13,6 +13,12 @@
 <%= button_tag "Buscar", name: nil, class: "btn btn-primary" %>
 <%= link_to 'limpar', posts_path  , class: "btn btn-primary" %>
 </div>
+<% @api_articles.each do |article| %>
+  <h2><%= article['title'] %></h2>
+  <p><%= article['description'] %></p>
+<% end %>
+<%= paginate @api_articles %>
+
 <% end %>
 <% @posts.each do |post| %>
   <div class="col-md-12">
@@ -28,7 +34,8 @@
     </p>
 
   
-
+    <h1>Top Headlines</h1>
+   
     <div class="gap-2 d-flex">
 
     <%= link_to 'Ver Post',post, class: "btn btn-primary" %>

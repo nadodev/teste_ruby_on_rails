@@ -6,7 +6,13 @@ class PostsController < ApplicationController
   def index
     @posts = if params[:search]
       Post.where("title LIKE ?", "%#{params[:search]}%")
+
     else
+     response = NewsApiService.top_headlines(page_size: 1)
+     @api_articles = JSON.parse(response.body)['articles']
+    @api_articles = Kaminari.paginate_array(@api_articles).page(params[:page]).per(10)
+
+
       Post.all
     end
   end
