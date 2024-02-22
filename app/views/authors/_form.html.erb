@@ -1,10 +1,10 @@
 <%= form_with(model: @author, local: true) do |form| %>
   <div class="mb-3">
-    <%= form.label :name, class: 'form-label' %>
+    <%= form.label :Nome, class: 'form-label' %>
     <%= form.text_field :name, class: 'form-control', required: true %>
   </div>
 
   <div class="text-center">
-    <%= form.submit class: 'btn btn-primary' %>
+    <%= form.submit 'Cadastrar', class: 'btn btn-primary' %>
   </div>
 <% end %>

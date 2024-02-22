@@ -4,7 +4,6 @@
 Esse projeto consiste em um teste, feito com ruby on rails.
 
 
-
 ## Stack utilizada
 
 **Front-end:** html, scss, css , bootstrap
@@ -24,7 +23,6 @@ faça o clone do projeto
   git clone https://github.com/nadodev/teste_ruby_on_rails.git
  
 ```
-    
 
 ## Instalação
 
@@ -34,7 +32,6 @@ Instale as libs com  bundle
   cd teste_ruby_on_rails
   bundle install
 ```
-    
 
 ## Configure o banco de dados:
 
@@ -46,18 +43,25 @@ Rode as migrations com
     
 ## Iniciar o projeto
 
-
 ```bash
   rails server
 ```
+
+# Atenção
+-  Para um bom funcionamento do projeto, cadastre um Autor antes do post
+
+
+
 ## Funcionalidades
 
 - CRUD de posts
+- CRUD Authors
 - Validações de campos obrigatórios
 - Busca de posts
+- Post relacionado atravez de API
+- Teste Ingregração
 
 ## Rodar os Teste
 
-
 ```bash
-  rails test
+  bundle exec rspec

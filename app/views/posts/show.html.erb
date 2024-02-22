@@ -2,7 +2,7 @@
     <div class="col-md-8 col-sm-12">
       <div class="d-flex gap-2">
       <%= link_to 'Inicio', posts_path  , class: "mb-4 btn btn-primary" %>
-      <%= link_to 'Novo Post', new_post_path , class: "mb-4 btn btn-primary" %>
+      <%= link_to 'Cadastrar Post', new_post_path , class: "mb-4 btn btn-primary" %>
       </div>
         <h1><%= @post.title %></h1>
         <p><%= @post.content %></p>
@@ -16,12 +16,36 @@
     </div>
     <h2>Notícias Relacionadas:</h2>
     <% limit = 3 %>
-    <% NewsApiService.get_news(@post.category).first(limit).each do |news| %>
+    <% NewsApiService.get_news(@post.category).first(limit).each_with_index do |news, index| %>
       <div class="card mb-3">
         <div class="card-body">
           <h5 class="card-title"><%= news['title'] %></h5>
           <p class="card-text"><%= news['description'] %></p>
+          
+          <!-- Adiciona um botão para abrir o modal da notícia relacionada -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsModal_<%= index + 1 %>">
+            Ver Detalhes
+          </button>
+
+          <!-- Adiciona o modal da notícia relacionada -->
+          <div class="modal fade" id="newsModal_<%= index + 1 %>" tabindex="-1" aria-labelledby="newsModalLabel_<%= index + 1 %>" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="newsModalLabel_<%= index + 1 %>"><%= news['title'] %></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p><%= news['description'] %></p>
+                  <!-- Adicione outros detalhes da notícia aqui -->
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     <% end %>
+  </div>
+</div>
+
 </div>

@@ -3,7 +3,10 @@ import "@hotwired/turbo-rails"
 import "controllers"
 
 document.addEventListener('DOMContentLoaded', function () {
-    var textoTextarea = document.getElementById('texto');
+  var textoTextarea = document.getElementById('texto');
+
+  // Verifica se o elemento #texto está presente na página
+  if (textoTextarea) {
     var contadorCaracteres = document.getElementById('contador');
 
     function atualizarContagem() {
@@ -25,4 +28,5 @@ document.addEventListener('DOMContentLoaded', function () {
     textoTextarea.addEventListener('input', function () {
       atualizarContagem();
     });
-  });
+  }
+});
