@@ -1,17 +1,29 @@
 
-# Teste Ruby On Rails
+# Descrição do Projeto: Teste Ruby on Rails com GitHub Actions
 
-Esse projeto consiste em um teste, feito com ruby on rails.
-
-
-## Stack utilizada
-
-**Front-end:** html, scss, css , bootstrap
-
-**Back-end:** Ruby, Ruby on Rails
+Este projeto consiste em um desafio de desenvolvimento utilizando Ruby on Rails, 
+O foco é garantir as melhores práticas de codificação, aprimorar a automação e assegurar a qualidade do código.
 
 
-## Configuração do Ambiente
+## Principais Características e Tecnologias:
+
+### Ruby on Rails:
+
+Utilizaremos o Ruby on Rails devido à sua capacidade de proporcionar um desenvolvimento ágil e eficiente para aplicações web.
+### GitHub Actions:
+
+Implementaremos GitHub Actions para automação de testes. A cada commit, os testes serão executados automaticamente, garantindo que o código esteja em conformidade com as diretrizes estabelecidas.
+### Testes Automatizados:
+
+Os testes automatizados desempenharão um papel crucial no processo de desenvolvimento. Os casos de teste abrangentes serão escritos para garantir a estabilidade do sistema.
+
+### Integração Contínua (CI):
+
+A integração contínua será alcançada por meio da configuração adequada no GitHub Actions. Isso garantirá que o código seja integrado suavemente e esteja sempre em um estado utilizável.
+
+
+
+# Configuração do Ambiente
 Certifique-se de ter o ambiente Ruby on Rails configurado corretamente.
 
 
@@ -60,8 +72,16 @@ Rode as migrations com
 - Busca de posts
 - Post relacionado atravez de API
 - Teste Ingregração
+- Github actions
 
 ## Rodar os Teste
 
 ```bash
   bundle exec rspec
+
+
+## Screenshots
+![Logo](https://i.ibb.co/dkMxpm2/Capturar1.png)
+
+![Logo](https://i.ibb.co/f2g9t3x/Capturar2.png)
+![Logo](https://i.ibb.co/cCGhx3p/Capturar3.png)
