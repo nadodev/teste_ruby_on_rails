@@ -11,5 +11,4 @@ class NewsApiService
     response['articles']
   end
 
-  # Adicione métodos conforme necessário para interagir com outras partes da API
 end

@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :posts
   root "posts#index"
+
+  resources :authors
+
 end

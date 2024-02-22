@@ -1,0 +1,13 @@
+<h1>Lista de Autores</h1>
+
+<% if @authors.any? %>
+  <ul>
+    <% @authors.each do |author| %>
+      <li><%= link_to author.name, author %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Nenhum autor cadastrado ainda.</p>
+<% end %>
+
+<%= link_to 'Cadastrar Novo Autor', new_author_path %>
