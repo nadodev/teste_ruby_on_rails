@@ -21,7 +21,11 @@ jobs:
     - name: Install Dependencies
       run: |
         gem install bundler
-        bundle install
+        bundle install --jobs 4 --retry 3
+
+    - name: Database Setup
+      run: |
+        bundle exec rake db:create db:migrate
 
     - name: Run RSpec Tests
       run: bundle exec rspec
