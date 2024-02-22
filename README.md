@@ -84,4 +84,4 @@ Rode as migrations com
 ![Logo](https://i.ibb.co/dkMxpm2/Capturar1.png)
 
 ![Logo](https://i.ibb.co/f2g9t3x/Capturar2.png)
-![Logo](https://i.ibb.co/cCGhx3p/Capturar3.png)
+![Logo](https://i.ibb.co/ZT5340F/Capturar3.png)
