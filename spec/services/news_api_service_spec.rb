@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'webmock/rspec'
+
 WebMock.disable_net_connect!(allow_localhost: true)
 
 # Descreve a classe e especifica que os testes são do tipo serviço para o RSpec.
