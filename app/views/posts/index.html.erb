@@ -1,56 +1,40 @@
 <div class="row">
-<div class="col-md-12 col-sm-12">
-<div class="d-flex align-items-center justify-content-between mb-4">
-    <h1>Posts</h1>
-  
-  <div class="d-flex gap-2">
-  <%= link_to 'Novo Post', new_post_path, class: "btn btn-primary" %>
-  </div>
-</div>
-<%= form_tag(posts_path, method: :get, id: 'search-form') do  %>
-<div class="d-flex gap-2 mb-4">
-<%= text_field_tag :search, params[:search], placeholder: "Buscar por...", id: 'search' , class: "form-control" %>
-<%= button_tag "Buscar", name: nil, class: "btn btn-primary" %>
-<%= link_to 'limpar', posts_path  , class: "btn btn-primary" %>
-</div>
-<% @api_articles.each do |article| %>
-  <h2><%= article['title'] %></h2>
-  <p><%= article['description'] %></p>
-<% end %>
+  <div class="col-md-12 col-sm-12">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+      <h1>Posts</h1>
 
-<nav aria-label="Page navigation">
-  <ul class="pagination">
-    <%= paginate @api_articles, theme: 'twitter-bootstrap-4',
-    pagination_class: "pagination-sm",
-    nav_class: "d-inline-b"%>
-  </ul>
-</nav>
-<% end %>
-<% @posts.each do |post| %>
-  <div class="col-md-12">
-  <div class="card mb-3">
-  <div class="card-body shadow">
-    <h4 class="card-title "><%= post.title %></h4>
-    <p class="card-text">
-      <b>Publicado em: </b> <%= "#{post.published_at.strftime('%d-%m-%Y %H:%M')}" %>
-    </p>
-
-    <p class="card-text">
-    <%= truncate(post.content, length: 100) %>
-    </p>
-
-  
-    <h1>Top Headlines</h1>
-   
-    <div class="gap-2 d-flex">
-
-    <%= link_to 'Ver Post',post, class: "btn btn-primary" %>
-    <%= render 'posts/delete_form', post: post %>
+      <div class="d-flex gap-2">
+        <%= link_to 'Novo Post', new_post_path, class: "btn btn-primary" %>
+      </div>
     </div>
-  </div>
-</div>
-  </div>
-<% end %>
-</div>
-</div>
 
+    <%= form_tag(posts_path, method: :get, id: 'search-form') do %>
+      <div class="d-flex gap-2 mb-4">
+        <%= text_field_tag :search, params[:search], placeholder: "Buscar por...", id: 'search', class: "form-control" %>
+        <%= button_tag "Buscar", name: nil, class: "btn btn-primary" %>
+        <%= link_to 'limpar', posts_path, class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+    <% @posts.each do |post| %>
+      <div class="col-md-12">
+        <div class="card mb-3">
+          <div class="card-body shadow">
+            <h4 class="card-title"><%= post.title %></h4>
+            <p class="card-text">
+              <b>Publicado em:</b> <%= post.published_at&.strftime('%d-%m-%Y %H:%M') %>
+            </p>
+            <p class="card-text">
+              <%= truncate(post.content, length: 100) %>
+            </p>
+    
+            <div class="gap-2 d-flex">
+              <%= link_to 'Ver Post', post, class: "btn btn-primary" %>
+              <%= render 'posts/delete_form', post: post %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

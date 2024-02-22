@@ -6,10 +6,22 @@
       </div>
         <h1><%= @post.title %></h1>
         <p><%= @post.content %></p>
-        <p><b>Publicado em:</b> <%= @post.published_at.strftime('%d-%m-%Y %H:%M:%S') %></p>
+        <b>Publicado em:</b> <%= @post.published_at&.strftime('%d-%m-%Y %H:%M') %>
+        <p><b>Categoria:</b> <%= @post.category %></p>
+        <p><b>Fontes:</b> <%= @post.fontes %></p>
         <hr>
         <h4>Detalhe do autor</h4>
         <p><b>Nome: </b><%= @post.author.name %></p>
         <%= link_to 'Editar Post', edit_post_path(@post) , class: "mb-4 btn btn-secondary"%>
     </div>
+    <h2>Notícias Relacionadas:</h2>
+    <% limit = 3 %>
+    <% NewsApiService.get_news(@post.category).first(limit).each do |news| %>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title"><%= news['title'] %></h5>
+          <p class="card-text"><%= news['description'] %></p>
+        </div>
+      </div>
+    <% end %>
 </div>

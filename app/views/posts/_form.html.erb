@@ -1,85 +1,58 @@
 
-
-
-  <%= form_with(model: @post, local: true, data: { turbo: false }) do |form| %>
-    <%= form.hidden_field :author_id %>
-
+<%= form_with(model: @post, local: true, data: { turbo: false }) do |form| %>
+  <%= form.hidden_field :author_id %>
     <% if post.errors.any? %>
       <div class="alert alert-danger" role="alert">
         <h4 class="alert-heading">Oops!</h4>
         <p>
-        <%= pluralize(@post.errors.count, "erro", "erros") %> impediram que este post fosse salvo:
-
+          <%= pluralize(@post.errors.count, "erro" , "erros" ) %> impediram que este post fosse salvo:
         </p>
         <ul>
           <% post.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
+            <li>
+              <%= message %>
+            </li>
+            <% end %>
         </ul>
       </div>
-    <% end %>
+      <% end %>
+        <div class="mb-3">
+          <%= form.label :Titulo, class: "form-label" %>
+            <%= form.text_field :title, class: "form-control" , placeholder: "Digite um titulo" %>
+        </div>
+        <div class="field">
+          <%= form.label :category %>
+            <%= form.select :category, options_for_select(['politics', 'sports' , 'technology' , 'entertainment' ],
+              @post.category), {}, { class: 'form-control' } %>
+        </div>
+        <div class="mb-3">
+          <%= form.label :Descrição, class: "form-label" %>
+            <%= form.text_area :content, class: "form-control" , placeholder: "Enter Content" , id: "texto" , rows: 4,
+              cols: 50 %>
+              <p>Contagem de caracteres: 
+                <span id="contador" class="<%= @post && @post.content && @post.content.length >= 100 ? 'verde' : 'vermelho' %>">
+                  <%= @post && @post.content ? @post.content.length : 0 %>
+                </span>
+              </p>
+        </div>
+        <div class="field">
+          <%= form.label :fontes, 'Fontes' %>
+            <%= form.text_field :fontes, class: 'form-control' %>
+        </div>
+        <div class="mb-3">
+          <%= form.label :'Data de publicação', class: "form-label" %>
+            <%= form.datetime_field :published_at, class: "form-control" %>
+        </div>
 
-    <div class="mb-3">
-      <%= form.label :Titulo, class: "form-label" %>
-      <%= form.text_field :title, class: "form-control", placeholder: "Digite um titulo" %>
-    </div>
+        <div class="mb-3">
+          <%= form.label :Autor, class: "form-label" %>
+            <%= form.collection_select :author_id, Author.all, :id, :name, { prompt: "Selecione um Autor" },
+              class: "form-select" %>
+        </div>
+        <div class="mb-3 d-flex gap-2">
+          <%= form.submit "Salvar" , class: "btn btn-primary" %>
+            <%= link_to 'Voltar' , posts_path, class: "btn btn-secondary" %>
+        </div>
+        <% end %>
 
-    <div class="mb-3">
-      <%= form.label :Descrição, class: "form-label" %>
-      <%= form.text_area :content, class: "form-control", placeholder: "Enter Content", id: "texto", rows: 4, cols: 50, maxlength: 100 %>
-<p>Contagem de caracteres: <span id="contador" class="<%= @post && @post.content && @post.content.length >= 100 ? 'verde' : 'vermelho' %>"><%= @post && @post.content ? @post.content.length : 0 %></span></p>
-
-<style>
-  .vermelho {
-    color: red;
-  }
-
-  .verde {
-    color: green;
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var textoTextarea = document.getElementById('texto');
-    var contadorCaracteres = document.getElementById('contador');
-
-    function atualizarContagem() {
-      var contadorAtual = textoTextarea.value.length;
-      contadorCaracteres.textContent = contadorAtual;
-
-      // Adiciona ou remove a classe dependendo da contagem de caracteres
-      if (contadorAtual < 100) {
-        contadorCaracteres.classList.remove('verde');
-        contadorCaracteres.classList.add('vermelho');
-      } else {
-        contadorCaracteres.classList.remove('vermelho');
-        contadorCaracteres.classList.add('verde');
-      }
-    }
-
-    // Atualiza a contagem quando a página é carregada
-    atualizarContagem();
-
-    textoTextarea.addEventListener('input', function() {
-      atualizarContagem();
-    });
-  });
-</script>
-    </div>
-
-    <div class="mb-3">
-      <%= form.label :'Data de publicação', class: "form-label" %>
-      <%= form.datetime_field :published_at, class: "form-control" %>
-    </div>
-
-    <div class="mb-3">
-      <%= form.label :Autor, class: "form-label" %>
-      <%= form.collection_select :author_id, Author.all, :id, :name, { prompt: "Selecione um Autor" }, class: "form-select" %>
-    </div>
-
-    <div class="mb-3 d-flex gap-2">
-      <%= form.submit "Salvar", class: "btn btn-primary" %>
-      <%= link_to 'Voltar', posts_path, class: "btn btn-secondary" %>
-    </div>
-  <% end %>
+   
