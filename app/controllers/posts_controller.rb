@@ -8,7 +8,6 @@ class PostsController < ApplicationController
       else
         response = NewsApiService.top_headlines(page_size: 10)
         @api_articles = JSON.parse(response.body)['articles']
-        @api_articles = Kaminari.paginate_array(@api_articles).page(params[:page]).per(10)
         @posts = Post.all
       end
     rescue StandardError => e
@@ -42,7 +41,8 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: 'Post foi atualizado com sucesso.'
+      flash[:success] = 'Post foi atualizado com sucesso.'
+      redirect_to @post
     else
       render :edit
     end

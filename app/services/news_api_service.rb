@@ -10,6 +10,4 @@ class NewsApiService
     response = top_headlines(category: category, page_size: limit)
     response['articles']
   end
-
-  # Adicione métodos conforme necessário para interagir com outras partes da API
 end
