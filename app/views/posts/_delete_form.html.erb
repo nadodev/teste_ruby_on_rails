@@ -1,0 +1,3 @@
+<%= form_with(model: post, method: :delete, local: false, data: { confirm: 'Tem certeza que deseja excluir este post?' }) do |form| %>
+  <%= form.submit 'Excluir', class: 'btn btn-danger' %>
+<% end %>

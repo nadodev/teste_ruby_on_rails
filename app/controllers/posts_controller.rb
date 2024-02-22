@@ -4,7 +4,11 @@ class PostsController < ApplicationController
   before_action :load_authors, only: [:new, :edit]
 
   def index
-    @posts = Post.all
+    @posts = if params[:search]
+      Post.where("title LIKE ?", "%#{params[:search]}%")
+    else
+      Post.all
+    end
   end
 
   def show

@@ -1,10 +1,13 @@
-<%= form_with(model: @post, local: true, data: { turbo: false }) do |form| %>
-  <%= form.hidden_field :author_id %>
+
+
+
+  <%= form_with(model: @post, local: true, data: { turbo: false }) do |form| %>
+    <%= form.hidden_field :author_id %>
 
     <% if post.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-  
+      <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Oops!</h4>
+        <p><%= pluralize(post.errors.count, "erros") %> impediu que este post fosse salvo</p>
         <ul>
           <% post.errors.full_messages.each do |message| %>
             <li><%= message %></li>
@@ -12,28 +15,29 @@
         </ul>
       </div>
     <% end %>
-  
-    <div class="field">
-      <%= form.label :title %>
-      <%= form.text_field :title %>
+
+    <div class="mb-3">
+      <%= form.label :Titulo, class: "form-label" %>
+      <%= form.text_field :title, class: "form-control", placeholder: "Digite um titulo" %>
     </div>
-  
-    <div class="field">
-      <%= form.label :content %>
-      <%= form.text_area :content %>
+
+    <div class="mb-3">
+      <%= form.label :Descrição, class: "form-label" %>
+      <%= form.text_area :content, class: "form-control", placeholder: "Enter Content" %>
     </div>
-  
-    <div class="field">
-      <%= form.label :published_at %>
-      <%= form.datetime_field :published_at %>
+
+    <div class="mb-3">
+      <%= form.label :'Data de publicação', class: "form-label" %>
+      <%= form.datetime_field :published_at, class: "form-control" %>
     </div>
-  
-    <div class="field">
-      <%= form.label :author_id %>
-      <%= form.collection_select :author_id, Author.all, :id, :name %>
+
+    <div class="mb-3">
+      <%= form.label :Autor, class: "form-label" %>
+      <%= form.collection_select :author_id, Author.all, :id, :name, { prompt: "Selecione um Autor" }, class: "form-select" %>
     </div>
-  
-    <div class="actions">
-      <%= form.submit %>
+
+    <div class="mb-3 d-flex gap-2">
+      <%= form.submit "Salvar", class: "btn btn-primary" %>
+      <%= link_to 'Voltar', posts_path, class: "btn btn-secondary" %>
     </div>
   <% end %>

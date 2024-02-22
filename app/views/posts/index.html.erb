@@ -1,7 +1,46 @@
-<h1>Posts</h1>
+<div class="row">
+<div class="col-md-12 col-sm-12">
+<div class="d-flex align-items-center justify-content-between mb-4">
+    <h1>Posts</h1>
+  
+  <div class="d-flex gap-2">
+  <%= link_to 'Novo Post', new_post_path, class: "btn btn-primary" %>
+  </div>
+</div>
+<%= form_tag(posts_path, method: :get, id: 'search-form') do  %>
+<div class="d-flex gap-2 mb-4">
+<%= text_field_tag :search, params[:search], placeholder: "Buscar por...", id: 'search' , class: "form-control" %>
+<%= button_tag "Buscar", name: nil, class: "btn btn-primary" %>
+<%= link_to 'limpar', posts_path  , class: "btn btn-primary" %>
+</div>
+<% end %>
 <% @posts.each do |post| %>
-  <div>
-    <h2><%= link_to post.title, post %></h2>
-    <p>   <%= "Published at: #{post.published_at.strftime('%d-%m-%Y %H:%M:%S')}" %></p>
+  <div class="col-md-12">
+  <div class="card mb-3">
+  <div class="card-body shadow">
+    <h4 class="card-title "><%= post.title %></h4>
+    <p class="card-text">
+      <b>Publicado em: </b> <%= "#{post.published_at.strftime('%d-%m-%Y %H:%M')}" %>
+    </p>
+
+    <p class="card-text">
+    <%= truncate(post.content, length: 100) %>
+    </p>
+
+  
+
+    <div class="gap-2 d-flex">
+
+    <%= link_to 'Ver Post',post, class: "btn btn-primary" %>
+    <%= render 'posts/delete_form', post: post %>
+    </div>
+  </div>
+</div>
   </div>
 <% end %>
+</div>
+</div>
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>

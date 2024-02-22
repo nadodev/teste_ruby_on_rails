@@ -1,0 +1,18 @@
+pt-BR:
+  activerecord:
+    attributes:
+      post:
+        title: "Título"
+        content: "Conteúdo"
+        author_id: "Autor"
+        author: "Autor"
+    errors:
+      models:
+        post:
+          attributes:
+            title:
+              blank: "não pode ficar em branco"
+            content:
+              too_short: "é muito curto (mínimo é %{count} caracteres)"
+            author_id:
+              blank: "é obrigatório(a)"

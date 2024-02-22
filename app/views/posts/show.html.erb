@@ -1,9 +1,15 @@
-<h1><%= @post.title %></h1>
-<p><%= @post.content %></p>
-<p><%= "Published at: #{@post.published_at.strftime('%d-%m-%Y %H:%M:%S')}" %>
-
-<h2>Author Details</h2>
-<p>Name: <%= @post.author.name %></p>
-
-
-<%= link_to 'Edit Post', edit_post_path(@post) %>
+<div class="row">
+    <div class="col-md-8 col-sm-12">
+      <div class="d-flex gap-2">
+      <%= link_to 'Inicio', posts_path  , class: "mb-4 btn btn-primary" %>
+      <%= link_to 'Novo Post', new_post_path , class: "mb-4 btn btn-primary" %>
+      </div>
+        <h1><%= @post.title %></h1>
+        <p><%= @post.content %></p>
+        <p><b>Publicado em:</b> <%= @post.published_at.strftime('%d-%m-%Y %H:%M:%S') %></p>
+        <hr>
+        <h4>Detalhe do autor</h4>
+        <p><b>Nome: </b><%= @post.author.name %></p>
+        <%= link_to 'Editar Post', edit_post_path(@post) , class: "mb-4 btn btn-secondary"%>
+    </div>
+</div>
