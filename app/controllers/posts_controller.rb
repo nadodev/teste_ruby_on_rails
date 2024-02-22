@@ -23,8 +23,10 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
   
     if @post.save
-      redirect_to @post, notice: 'Post was successfully created.'
+      flash[:success] = 'Post criado com sucesso!'
+      redirect_to posts_path
     else
+       flash[:error] = 'Erro ao criar o post. Por favor, verifique os campos.'
       render :new
     end
   end
@@ -43,7 +45,12 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_url, notice: 'Post was successfully destroyed.'
+    if @post.destroy
+    flash[:success] = 'Post deletado com sucesso!'
+    redirect_to posts_url
+    else
+      flash[:error] = 'Erro ao deletar o post.'
+    end
   end
 
   private

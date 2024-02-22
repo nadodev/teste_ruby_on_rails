@@ -70,3 +70,4 @@ gem 'bootstrap', '~> 5.3.2'
 
 gem 'sassc-rails', '>= 2.1.2'
 gem 'rails-i18n', '~> 7.0.0'
+gem 'toastr-rails'

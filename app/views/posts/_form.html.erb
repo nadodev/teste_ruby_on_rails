@@ -7,7 +7,10 @@
     <% if post.errors.any? %>
       <div class="alert alert-danger" role="alert">
         <h4 class="alert-heading">Oops!</h4>
-        <p><%= pluralize(post.errors.count, "erros") %> impediu que este post fosse salvo</p>
+        <p>
+        <%= pluralize(@post.errors.count, "erro", "erros") %> impediram que este post fosse salvo:
+
+        </p>
         <ul>
           <% post.errors.full_messages.each do |message| %>
             <li><%= message %></li>
@@ -23,7 +26,46 @@
 
     <div class="mb-3">
       <%= form.label :Descrição, class: "form-label" %>
-      <%= form.text_area :content, class: "form-control", placeholder: "Enter Content" %>
+      <%= form.text_area :content, class: "form-control", placeholder: "Enter Content", id: "texto", rows: 4, cols: 50, maxlength: 100 %>
+<p>Contagem de caracteres: <span id="contador" class="<%= @post && @post.content && @post.content.length >= 100 ? 'verde' : 'vermelho' %>"><%= @post && @post.content ? @post.content.length : 0 %></span></p>
+
+<style>
+  .vermelho {
+    color: red;
+  }
+
+  .verde {
+    color: green;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var textoTextarea = document.getElementById('texto');
+    var contadorCaracteres = document.getElementById('contador');
+
+    function atualizarContagem() {
+      var contadorAtual = textoTextarea.value.length;
+      contadorCaracteres.textContent = contadorAtual;
+
+      // Adiciona ou remove a classe dependendo da contagem de caracteres
+      if (contadorAtual < 100) {
+        contadorCaracteres.classList.remove('verde');
+        contadorCaracteres.classList.add('vermelho');
+      } else {
+        contadorCaracteres.classList.remove('vermelho');
+        contadorCaracteres.classList.add('verde');
+      }
+    }
+
+    // Atualiza a contagem quando a página é carregada
+    atualizarContagem();
+
+    textoTextarea.addEventListener('input', function() {
+      atualizarContagem();
+    });
+  });
+</script>
     </div>
 
     <div class="mb-3">
