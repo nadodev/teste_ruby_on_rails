@@ -73,4 +73,6 @@ gem 'rails-i18n', '~> 7.0.0'
 gem 'toastr-rails'
 gem 'httparty'
 gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
+
 
