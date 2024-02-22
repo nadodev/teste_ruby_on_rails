@@ -1,0 +1,27 @@
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - main  # ou o nome da sua branch principal
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # ou a imagem de sistema operacional de sua escolha
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Ruby (exemplo para Ruby)
+      uses: actions/setup-ruby@v2
+      with:
+        ruby-version: 2.7  # ou a versão de Ruby de sua escolha
+
+    - name: Install Dependencies
+      run: |
+        gem install bundler
+        bundle install
+
+    - name: Run Tests
+      run: bundle exec rspec  # ou o comando de teste apropriado para sua aplicação
